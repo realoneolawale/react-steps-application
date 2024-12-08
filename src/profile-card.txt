@@ -1,0 +1,64 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./styles.css";
+
+function App() {
+  return (
+    <div className="card">
+      <Avatar />
+      <div className="data">
+        <Intro />
+        {/* Should contain one Skill component
+        for each web dev skill that you have,
+        customized with props */}
+        <SkillList />
+      </div>
+    </div>
+  );
+}
+
+const Avatar = () => {
+  return <img src="wale.jpg" alt="My Image" className="avatar" />;
+};
+
+const Intro = () => {
+  return (
+    <div>
+      <h3>Rilwan Amoo</h3>
+      <p>
+        I am full stack developer using technologies like C#, Java, Angular and
+        React. I am have hands-on experience creating solution for both small
+        and large scale businesses.
+      </p>
+    </div>
+  );
+};
+
+const SkillList = () => {
+  const skills = ["C#", "Java", "Angular", "React"];
+  return (
+    <div className="skill-list">
+      <Skill skill="React" emoji="😍" color="#123456" />
+      <Skill skill="Java" emoji="💪🏿" color="orangered" />
+      <Skill skill="C#" emoji="💪🏿" color="purple" />
+      <Skill skill="Angular" emoji="👍🏿" color="red" />
+    </div>
+  );
+};
+
+const Skill = (props) => {
+  return (
+    <div className="skill" style={{ background: props.color }}>
+      {props.skill} {props.emoji}
+    </div>
+  );
+};
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
